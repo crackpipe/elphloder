@@ -90,7 +90,8 @@ void elph_relocate(char *buf, int off, int shsize,
 
 		elph_debug("REL:\taddr=0x%x name=\"%s\" dsym=0x%x", (int)addr, name, (int)dsym);
 
-		if(!dsym) dsym = (Elf32_Addr*)&elph_unknown;
+		if(!dsym)
+			dsym = (Elf32_Addr*)&elph_unknown;
 
 		switch(ELF32_R_TYPE(rel[i].r_info)) {
 		case R_386_GLOB_DAT: *(Elf32_Addr*)addr = (int)dsym; break;
