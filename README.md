@@ -6,7 +6,7 @@ it's an ELF loader. it takes non-PIE ELFs and loads them.
 
 ## does it work?
 
-i think it does. if it doesn't, just like open an issue in the issue section.
+i think it does. if it doesn't, just open an issue in the issue section.
 
 ## how to use
 
