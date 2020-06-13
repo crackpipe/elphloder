@@ -1,4 +1,4 @@
-int main()
+int main(int argc, char **argv)
 {
 	for(int i = 0; i < 100; i++) {
 		if(!(i % 3)) printf("Fizz ");

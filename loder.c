@@ -1,7 +1,8 @@
 #include <stdio.h>
+#include <fcntl.h>
 #include <stdlib.h>
 #include <unistd.h>
-#include <fcntl.h>
+#include <signal.h>
 
 #include <elf.h>
 
@@ -15,11 +16,21 @@ void help(char *b)
 	printf("elphloder by eight\n"
 		"Compiled at: " __DATE__ " " __TIME__ "\n"
 		"Usage: %s <elf> <args>\n", b);
-	_Exit(0);
+	exit(0);
+}
+
+void signal_handler(int sig)
+{
+	elph_error("Caught signal. %s", sys_siglist[sig]);
+	exit(1);
 }
 
 int main(int argc, char **argv)
 {
+	for(int i = 1; i < NSIG; i++) {
+		signal(i, signal_handler);
+	}
+
 	if(argc < 2) help(argv[0]);
 	else {
 		int fd;
